@@ -57,3 +57,67 @@
   angular.module('yourAngularJsAppName')
     .factory('UsernameService', downgradeInjectable(UsernameService));
   ```
+  完成这两步之后UsernameService就可以在angular1.x controller component service等注入使用了，在angular5中的使用方法这里就不举例了，按照angular5的使用方法来就行
+
+* #### 项目中的filter逐步升级为angular5的pipe，同时angular1.x的filter依然保留
+  由于filter的性能问题angular2中已经将filter改为pipe，angular团队没有提供filter升级为pipe，或者pipe降级为filter的module，所以angular1.x中使用filter，angular中使用pipe，filter的升级放在component之前，因为component的template可能会用到
+  #### username-pipe:ts
+  ```
+  import { Pipe, PipeTransform } from '@angular/core';
+  Pipe({
+    name: 'username'
+  })
+  export class usernamePipe implements PipeTransform { 
+    transform(value: string): string {
+      return value === 'nina' ? '黄燕' : value;
+    }
+  }
+  ```
+* #### 将项目中的component逐步升级为angular5的component
+  我们将hero-detail.js里面的内容升级为hero-detail.ts：
+  ```
+  import { Component, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
+  import { UsernameService } from '../../service/username-service';
+  @Component({
+    selector: 'hero-detail',
+    templateUrl: './hero-detail.component.html'
+  })
+  export class HeroDetailComponent {
+    Public hero: string;
+    
+    constructor(private usernameService: UsernameService) {
+	    this.hero = usernameService.get()
+    }
+  }
+  ```
+  要在angular1.x中使用hero-detail component，先创建一个downgrade-components.ts文件，这里将会存放所有angular5组件降级后在angular1.x中使用的组件
+  #### downgrade-components.ts
+  ```
+  import * as angular from 'angular';
+  import { downgradeComponent } from '@angular/upgrade/static';
+  import { HeroDetailComponent } from './app/components/hero-detail/hero-detail.component';
+  angular.module('yourAngularJsAppName')
+    .directive('heroDetail', downgradeComponent({ component: HeroDetailComponent }) as angular.IDirectiveFactory)
+  ```
+  现在你可以在angular1.x中的template中使用hero-detail组件了，组件之间通讯的问题按照angular5的接口写
+  
+* #### 将angular1.x controller改成angular5 component
+  现在就剩下controller了，angular2已经取消了controller，controller可以把它当成一个大的component，所以我们按照component的方法重构controller，并且对新的component降级，controller重构之后我们需要修改路由，我们现在使用的还是angular1.x的路由，基本上一个路由对应的是一个controller，这个时候路由可以这样修改：
+  假设有个TestContentCtrl，对应的路由是test
+  ```
+  .state('test', {
+    url: '/test',
+    controller: 'TestContentCtrl',
+    controllerAs: 'vm',
+    templateUrl: './src/controllers/test-content-ctrl.html'
+   })
+  ```
+  在TestContentCtrl改成test-content component后
+  ```
+  .state('test', {
+    url: '/test',
+    template: '<test-content></test-content>'
+   })
+  ```
+* #### 第三方插件或者库解决方案
+  关于项目中引用基于angular1.x的插件或者库，基本都能找到angular2+的版本，可以将angular2+的版本引入进行降级处理就可以在angular1.x中使用了，但是~~~， angular2+的版本很多API都改了，angular1.x中的对应使用方法可能不存在了，这里有两种解决方案
