@@ -1,4 +1,5 @@
 # angular1.x 升级 angular2+ 方案
+我给大家提供的是angular1.x和angular5并行，增量式升级方案，这样大家可以循序渐进升级自己的应用
 #### 方案1: 主体为angular1.x，逐步将angular1.x当中service、component、filter、controller、route、dependencies升级为angular5
 
 #### 方案2: 主体为angular5，将项目所有js文件先进行一次加工，采用ES6的方式将每个js文件module export出来，再逐步将内容向angular5靠近
