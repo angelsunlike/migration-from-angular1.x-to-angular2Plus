@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "module": "commonjs", // 组织代码的方式
+    "target": "es5", // 编译目标平台
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true, // 把ts文件变异成js文件时，是否生成对应的SourceMap文件
+    "emitDecoratorMetadata": true, // 让TypeScript支持为带有装饰器的声明生成元数据
+    "experimentalDecorators": true, // 是否启用实验性装饰器特性
+    "noImplicitAny": false,//当 noImplicitAny 标志是 false( 默认值 ) 时， 如果编译器无法根据变量的用途推断出变量的类型，它就会悄悄的把变量类型默认为 any。这就是 隐式 any 的含义
+    "lib": ["dom", "es2017"],
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}

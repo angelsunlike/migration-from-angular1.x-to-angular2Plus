@@ -1,0 +1,11 @@
+<div ng-controller="MainCtrl as vm" style="padding: 20px;background: burlywood">
+	{{vm.message}}<br>
+	<button ng-click="vm.clickEvent1()">angularjs-service</button>
+	<button ng-click="vm.clickEvent2()">angular-service</button><br>
+	<button ng-click="vm.clickToastr()">angular-toastr-service</button>
+	<br>
+	<br>
+	{{'angular' | angularjsFilter}}
+	<hello-angular hero="vm.angular1"></hello-angular>
+	<hero-detail [hero]="vm.angular5"></hero-detail>
+</div>
