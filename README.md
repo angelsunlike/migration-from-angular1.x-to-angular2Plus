@@ -131,7 +131,7 @@
 
 现在项目中所有的内容基本都升级为angular5了，我们可以删除downgrade-services.ts和downgrade-components.ts这两个文件了，同时将路由升级为angular5，删除angular1.x相关的库和插件，一个完整的angular5应用就诞生了
 
-如果不是很明白直接看demo
+喜欢的请给个star哟~~~，如果不是很明白直接看demo
 
 分享个问题：
 
