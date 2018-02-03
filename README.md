@@ -35,7 +35,7 @@
   platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.log(err));
   ```
-    我们就要开始运行AngularJS+5的混合式应用程序了！所有现存的AngularJS代码会像以前一样正常工作，但是我们现在也同样可以运行Angular代码了
+  我们就要开始运行AngularJS+5的混合式应用程序了！所有现存的AngularJS代码会像以前一样正常工作，但是我们现在也同样可以运行Angular代码了
     
 * #### 将项目中的services逐步升级为angular5
   我们将username-service.js里面的内容升级为username-service.ts：
@@ -48,4 +48,12 @@
     }
   }
   ```
-  
+  要在angular1.x中使用UsernameService，先创建一个downgrade-services.ts文件，这里将会存放所有angular5服务降级后在angular1.x中使用的服务
+  #### downgrade-services.ts：
+  ```
+  import * as angular from 'angular';
+  import { downgradeInjectable } from '@angular/upgrade/static';
+  import { UsernameService  } from './services/ username-service '; 
+  angular.module('yourAngularJsAppName')
+    .factory('UsernameService', downgradeInjectable(UsernameService));
+  ```
