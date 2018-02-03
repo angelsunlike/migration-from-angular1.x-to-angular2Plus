@@ -123,8 +123,9 @@
 * #### 第三方插件或者库解决方案
   关于项目中引用基于angular1.x的插件或者库，基本都能找到angular2+的版本，可以将angular2+的版本引入进行降级处理就可以在angular1.x中使用了，但是~~~， angular2+的版本很多API都改了，angular1.x中的对应使用方法可能不存在了，这里有两种解决方案
   * 引入angular2+的版本，删除angular1.x版本，降级后在angular1.x应用中用到该插件的都检查一次，运用angular2+的版本的API使用该插件
-  * 引入angular2+的版本，保留angular1.x版本，angular1.x应用使用angular1.x版本插件， angular5应用使用angular2+版本插件，这样会导致一个问题，增加了项目的体积，相同的插件引用了两个版本。
-  在不影响首屏加载时间的情况下方案2是不错的选择，因为一次性将所有插件或者库的API全部过一遍，工作量比较大容易出错，也不符合我们增量式升级的初衷
+  * 引入angular2+的版本，保留angular1.x版本，angular1.x应用使用angular1.x版本插件， angular5应用使用angular2+版本插件，
+  
+  这样会导致一个问题，增加了项目的体积，相同的插件引用了两个版本。在不影响首屏加载时间的情况下方案2是不错的选择，因为一次性将所有插件或者库的API全部过一遍，工作量比较大容易出错，也不符合我们增量式升级的初衷
 	
 
 现在项目中所有的内容基本都升级为angular5了，我们可以删除downgrade-services.ts和downgrade-components.ts这两个文件了，同时将路由升级为angular5，删除angular1.x相关的库和插件，一个完整的angular5应用就诞生了
