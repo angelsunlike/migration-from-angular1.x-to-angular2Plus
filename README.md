@@ -70,7 +70,7 @@
   })
   export class usernamePipe implements PipeTransform { 
     transform(value: string): string {
-      return value === 'nina' ? '黄燕' : value;
+      return value === 'nina' ? '张三' : value;
     }
   }
   ```
