@@ -40,6 +40,7 @@
     
 * #### 将项目中的services逐步升级为angular5
   由于controller和component当中可能会使用到其他component、service、filter，为了让升级有条不紊的进行，我们优先对service进行升级，因为service当中只会调用其他的service
+  
   我们将username-service.js里面的内容升级为username-service.ts：
   ```
   import { Injectable } from '@angular/core';
