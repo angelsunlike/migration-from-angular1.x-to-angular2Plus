@@ -4,9 +4,9 @@
 
 #### 方案2: 主体为angular5，将项目所有js文件先进行一次加工，采用ES6的方式将每个js文件module export出来，再逐步将内容向angular5靠近
 
-我建议选择方案1增量式升级，通过在同一个应用中一起运行这两个框架，并且逐个把AngularJS的组件迁移到Angular中。 可以在不必打断其它业务的前提下，升级应用程序，因为这项工作可以多人协作完成，在一段时间内逐渐铺开，下面就方案1展开说明
+我建议选择方案1增量式升级，通过在同一个应用中一起运行这两个框架，并且逐个把AngularJS的组件迁移到Angular中。 可以在不必打断其它业务的前提下，升级应用，这项工作可以多人协作完成，在一段时间内逐渐铺开，下面就方案1展开说明
 
-#### Hybrid APP主要依赖Angular提供upgrade/static模块。后面你将随处可见它的身影。以下手把手教你将angular1.x迁移到angular2+
+#### Hybrid APP主要依赖Angular提供upgrade/static模块，它可以帮助我们启动并管理一个同时支持Angular和AngularJS的混合应用，即在同一个应用中一起运行angularjs和angular两个框架，后面你将随处可见它的身影。以下手把手教你将angular1.x迁移到angular2+
 
 * #### 调用 UpgradeModule 来引导 AngularJS
   在AngularJS中，我们会把AngularJS的资源添加到angular.module属性上。 在Angular中，我们会创建一个或多个带有NgModule装饰器的类，这些装饰器用来在元数据中描述Angular资源。在混合式应用中，我们同时运行了两个版本的Angular。 这意味着我们至少需要AngularJS和Angular各提供一个模块。要想引导混合式应用，我们在应用中必须同时引导 Angular 和 AngularJS。要先引导 Angular ，然后再调用 UpgradeModule 来引导 AngularJS。
@@ -39,13 +39,14 @@
   我们就要开始运行AngularJS+5的混合式应用程序了！所有现存的AngularJS代码会像以前一样正常工作，但是我们现在也同样可以运行Angular代码了
     
 * #### 将项目中的services逐步升级为angular5
+  由于controller和component当中可能会使用到其他component、service、filter，为了让升级有条不紊的进行，我们优先对service进行升级，因为service当中只会调用其他的service
   我们将username-service.js里面的内容升级为username-service.ts：
   ```
   import { Injectable } from '@angular/core';
   @Injectable() 
   export class UsernameService {
     get() {
-      return 'nina'
+      return '张三'
     }
   }
   ```
