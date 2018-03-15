@@ -12,7 +12,7 @@
                     url: '/',
                     controller: 'MainCtrl',
                     controllerAs: 'vm',
-                    templateUrl: './src/controllers/main/main-ctrl.html'
+                    templateUrl: './src/legacy/controller/main-ctrl.html'
                 })
 				.state('test', {
 					url: '/test',

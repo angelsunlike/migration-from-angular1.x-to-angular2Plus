@@ -6,7 +6,7 @@
 	/* @ngInject */
 	function MainCtrl(AngularjsService, AngularService, ToastsManager) {
 		var vm = this;
-		vm.message = 'This is an angular controller';
+		vm.message = 'This is an angularjs controller';
 		vm.angular5 = 'This is an angular component';
 		vm.angular1 = 'This is an angularjs component';
 		vm.clickEvent1 = function () {

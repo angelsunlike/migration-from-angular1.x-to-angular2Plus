@@ -3,13 +3,13 @@
 import 'angular'
 import 'angular-ui-router'
 
-import './_app'
-import './routes';
-import './controllers/main/main-ctrl';
+import './legacy/_app'
+import './legacy/routes';
+import './legacy/controller/main-ctrl';
 
 import './downgrade-component'
 import './downgrade-service'
 
-import './app/components/hello-angular/hello-angular';
-import './app/service/angularjs-service';
-import './app/filter/angularjs-filter';
+import './legacy/components/hello-angular/hello-angular';
+import './legacy/services/angularjs-service';
+import './legacy/filters/angularjs-filter';
