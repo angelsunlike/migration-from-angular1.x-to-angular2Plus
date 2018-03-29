@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('ccfeFrontend')
+    angular.module('myApp')
         .controller('MainCtrl', MainCtrl);
 	/* @ngInject */
 	function MainCtrl(AngularjsService, AngularService, ToastsManager) {

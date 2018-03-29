@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ccfeFrontend')
+        .module('myApp')
         .factory('AngularjsService', AngularjsService);
 
     /* @ngInject */

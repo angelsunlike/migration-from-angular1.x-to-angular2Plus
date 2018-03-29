@@ -37,6 +37,6 @@ import { UpgradeModule } from '@angular/upgrade/static';
 export class AppModule {
     constructor(private upgrade: UpgradeModule) { }
     ngDoBootstrap() {
-        this.upgrade.bootstrap(document.body, ['ccfeFrontend'], { strictDi: true });
+        this.upgrade.bootstrap(document.body, ['myApp'], { strictDi: true });
     }
 }

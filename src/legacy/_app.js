@@ -2,5 +2,5 @@
 	'use strict';
 
 	angular
-		.module('ccfeFrontend', ['ui.router']);
+		.module('myApp', ['ui.router']);
 })();

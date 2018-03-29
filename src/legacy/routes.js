@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ccfeFrontend')
+        .module('myApp')
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			$locationProvider.html5Mode(true).hashPrefix('!');
             $urlRouterProvider.otherwise('/');
